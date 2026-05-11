@@ -813,3 +813,410 @@ cursor.style.top = e.clientY + "px";
 
 </body>
 </html>
+<!-- ========================================= -->
+<!-- REPLACE ONLY THIS HERO SECTION -->
+<!-- ========================================= -->
+
+<section class="hero">
+
+  <!-- BIG BG TEXT -->
+  <div class="big-portfolio">
+    Portfolio
+  </div>
+
+  <div class="hero-grid">
+
+    <!-- LEFT CONTENT -->
+
+    <div class="left">
+
+      <div class="small-top">
+        UGC CREATOR • FOUNDER • VISUAL STORYTELLER
+      </div>
+
+      <!-- YASHASVIBE HEADING -->
+
+      <h1 class="yashasvi-heading">
+        Yashasvibe
+      </h1>
+
+      <div class="byline">
+        by Yashasvi Soni
+      </div>
+
+      <!-- STACK -->
+
+      <div class="left-stack">
+        <span>UI</span>
+        <span>UGC</span>
+        <span>TECH</span>
+      </div>
+
+      <div class="left-line"></div>
+
+      <!-- MINI SOCIALS -->
+
+      <div class="social-mini">
+
+        <div>inst:</div>
+        <div>yashasvibe</div>
+
+        <div>tgr:</div>
+        <div>yashasvibe</div>
+
+      </div>
+
+      <!-- INTRO -->
+
+      <div class="intro">
+        UGC creator, founder, and cinematic visual storyteller building emotional
+        creator brands, aesthetic-first campaigns, immersive interfaces,
+        and internet experiences inspired by fashion, AI, luxury visuals,
+        and future-facing storytelling.
+      </div>
+
+    </div>
+
+    <!-- CENTER IMAGE -->
+
+    <div class="center-image">
+
+      <!-- MAIN 3D FACE -->
+
+      <img
+        class="main-face"
+        src="./images/yashasvi-3d.png"
+        alt="Yashasvi 3D Portrait"
+      >
+
+      <!-- SIDE BODY PNG -->
+
+      <img
+        class="side-body"
+        src="./images/yashasvi-body.png"
+        alt="Yashasvi"
+      >
+
+      <!-- RIGHT TITLE -->
+
+      <div class="right-title">
+
+        <div class="small">
+          YASHASVIBE
+        </div>
+
+        <div class="big">
+          UGC<br>
+          CREATOR
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ========================================= -->
+<!-- REPLACE THIS CSS TOO -->
+<!-- ========================================= -->
+
+<style>
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+padding:40px 60px;
+position:relative;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+radial-gradient(circle at top,#7b0000 0%,#240000 45%,#070707 100%);
+}
+
+/* BIG BG TEXT */
+
+.big-portfolio{
+position:absolute;
+top:0;
+left:30px;
+font-size:14vw;
+line-height:.8;
+font-family:'Cormorant Garamond',serif;
+font-weight:700;
+color:rgba(0,0,0,.45);
+z-index:1;
+letter-spacing:-8px;
+}
+
+/* HERO GRID */
+
+.hero-grid{
+width:100%;
+max-width:1550px;
+display:grid;
+grid-template-columns:420px 1fr;
+gap:20px;
+align-items:center;
+position:relative;
+z-index:5;
+}
+
+/* LEFT */
+
+.left{
+padding-top:100px;
+position:relative;
+z-index:5;
+}
+
+.small-top{
+font-size:.75rem;
+letter-spacing:5px;
+color:#f5dcdc;
+margin-bottom:20px;
+}
+
+/* YASHASVIBE */
+
+.yashasvi-heading{
+font-size:7rem;
+line-height:.9;
+font-family:'Cormorant Garamond',serif;
+font-weight:700;
+margin-bottom:10px;
+color:#fff3ea;
+}
+
+/* BYLINE */
+
+.byline{
+font-size:1rem;
+letter-spacing:2px;
+margin-bottom:35px;
+color:#f2d5d5;
+}
+
+/* STACK */
+
+.left-stack{
+font-size:5rem;
+font-weight:900;
+line-height:.9;
+margin-bottom:20px;
+}
+
+.left-stack span{
+display:block;
+}
+
+/* LINE */
+
+.left-line{
+width:130px;
+height:4px;
+background:#ffb0b0;
+border-radius:999px;
+margin:30px 0;
+}
+
+/* SOCIAL MINI */
+
+.social-mini{
+display:grid;
+grid-template-columns:80px auto;
+gap:10px;
+font-size:1rem;
+line-height:1.8;
+color:#f4dada;
+margin-bottom:40px;
+}
+
+/* INTRO */
+
+.intro{
+max-width:420px;
+line-height:2;
+font-size:1rem;
+color:#f1dfdf;
+}
+
+/* CENTER IMAGE */
+
+.center-image{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:flex-end;
+min-height:900px;
+}
+
+/* MAIN FACE */
+
+.main-face{
+position:absolute;
+width:780px;
+max-width:none;
+z-index:2;
+object-fit:contain;
+filter:
+drop-shadow(0 0 80px rgba(255,0,0,.35))
+drop-shadow(0 0 120px rgba(255,0,0,.25));
+}
+
+/* SIDE BODY */
+
+.side-body{
+position:absolute;
+right:-60px;
+bottom:-20px;
+width:340px;
+z-index:4;
+object-fit:contain;
+filter:
+drop-shadow(0 0 50px rgba(255,0,0,.2));
+}
+
+/* RIGHT */
+
+.right-title{
+position:absolute;
+right:0;
+top:160px;
+text-align:right;
+z-index:6;
+}
+
+.right-title .small{
+font-size:1.1rem;
+letter-spacing:3px;
+margin-bottom:10px;
+color:#f2dcdc;
+}
+
+.right-title .big{
+font-size:8rem;
+line-height:.85;
+font-weight:900;
+color:#f4ece4;
+}
+
+/* MOBILE */
+
+@media(max-width:1200px){
+
+.hero-grid{
+grid-template-columns:1fr;
+}
+
+.right-title{
+position:relative;
+right:auto;
+top:auto;
+text-align:left;
+margin-top:30px;
+}
+
+.side-body{
+display:none;
+}
+
+.main-face{
+width:100%;
+max-width:600px;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+padding:30px;
+}
+
+.big-portfolio{
+font-size:24vw;
+left:0;
+top:20px;
+}
+
+.yashasvi-heading{
+font-size:4rem;
+}
+
+.left-stack{
+font-size:3rem;
+}
+
+.right-title .big{
+font-size:4rem;
+}
+
+}
+
+</style>
+
+<!-- ========================================= -->
+<!-- REPLACE BRAND SECTION WITH THIS -->
+<!-- ========================================= -->
+
+<section class="section">
+
+  <h2 class="section-title">
+    UGC + Brand Campaigns
+  </h2>
+
+  <div class="cards">
+
+    <!-- LOVABLE -->
+
+    <div class="card">
+
+      <img
+        src="./images/lovable-logo.png"
+        alt="Lovable AI"
+      >
+
+      <div class="card-content">
+        <h3>Lovable AI</h3>
+      </div>
+
+    </div>
+
+    <!-- POPPY -->
+
+    <div class="card">
+
+      <img
+        src="./images/poppy-logo.png"
+        alt="Poppy AI"
+      >
+
+      <div class="card-content">
+        <h3>Poppy AI</h3>
+      </div>
+
+    </div>
+
+    <!-- PICSART -->
+
+    <div class="card">
+
+      <img
+        src="./images/picsart-logo.png"
+        alt="Picsart"
+      >
+
+      <div class="card-content">
+        <h3>Picsart</h3>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
