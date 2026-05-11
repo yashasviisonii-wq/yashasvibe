@@ -1,595 +1,800 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Yashasvibe — Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Yashasvibe — Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <style>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
-    }
+<style>
 
-    body{
-      background:#050505;
-      color:white;
-      font-family:'Inter',sans-serif;
-      overflow-x:hidden;
-      cursor:none;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at top,#7a0000 0%,transparent 40%),
-      radial-gradient(circle at bottom,#300000 0%,transparent 40%);
-      opacity:.8;
-      z-index:-2;
-    }
+html{
+scroll-behavior:smooth;
+}
 
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-      opacity:.15;
-      z-index:-1;
-    }
+body{
+background:#120000;
+font-family:'Inter',sans-serif;
+overflow-x:hidden;
+color:white;
+cursor:none;
+}
 
-    .cursor{
-      width:20px;
-      height:20px;
-      border:1px solid white;
-      border-radius:50%;
-      position:fixed;
-      transform:translate(-50%,-50%);
-      pointer-events:none;
-      z-index:9999;
-      mix-blend-mode:difference;
-    }
+/* GRAIN */
 
-    .container{
-      display:flex;
-    }
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+opacity:.12;
+pointer-events:none;
+z-index:999;
+}
 
-    .sidebar{
-      width:120px;
-      height:100vh;
-      border-right:1px solid rgba(255,255,255,.08);
-      padding:30px 20px;
-      position:fixed;
-      left:0;
-      top:0;
-      background:rgba(0,0,0,.6);
-      backdrop-filter:blur(20px);
-    }
+/* CURSOR */
 
-    .logo{
-      font-size:2rem;
-      color:#ff2d2d;
-      font-weight:800;
-      margin-bottom:5px;
-    }
+.cursor{
+width:18px;
+height:18px;
+border:1px solid white;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+mix-blend-mode:difference;
+z-index:9999;
+}
 
-    .logo-small{
-      font-size:.8rem;
-      color:#fff;
-      margin-bottom:50px;
-    }
+/* MAIN */
 
-    .nav{
-      display:flex;
-      flex-direction:column;
-      gap:20px;
-    }
+.main{
+width:100%;
+min-height:100vh;
+}
 
-    .nav a{
-      color:#ddd;
-      text-decoration:none;
-      font-size:.85rem;
-      transition:.3s;
-    }
+/* HERO */
 
-    .nav a:hover{
-      color:#ff3b3b;
-      transform:translateX(5px);
-    }
+.hero{
+min-height:100vh;
+padding:60px;
+position:relative;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+radial-gradient(circle at top,#6e0000 0%,#1b0000 40%,#090909 100%);
+}
 
-    .main{
-      margin-left:120px;
-      width:calc(100% - 120px);
-      padding:40px;
-    }
+/* BIG PORTFOLIO */
 
-    .hero{
-      min-height:100vh;
-      position:relative;
-      display:flex;
-      align-items:center;
-      overflow:hidden;
-    }
+.big-portfolio{
+position:absolute;
+top:10px;
+left:40px;
+font-size:15vw;
+line-height:.8;
+font-family:'Cormorant Garamond',serif;
+color:rgba(60,0,0,.7);
+z-index:1;
+font-weight:700;
+}
 
-    .portfolio-bg{
-      position:absolute;
-      top:-20px;
-      left:0;
-      font-size:15vw;
-      font-family:'Cormorant Garamond',serif;
-      color:rgba(255,0,0,.25);
-      z-index:0;
-      line-height:.8;
-    }
+/* HERO GRID */
 
-    .hero-content{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      align-items:center;
-      width:100%;
-      position:relative;
-      z-index:2;
-    }
+.hero-grid{
+width:100%;
+max-width:1500px;
+display:grid;
+grid-template-columns:420px 1fr;
+align-items:center;
+gap:20px;
+position:relative;
+z-index:3;
+}
 
-    .left h1{
-      font-size:6rem;
-      line-height:.9;
-      margin-bottom:20px;
-      color:#fff;
-      font-weight:800;
-    }
+/* LEFT */
 
-    .left .stack{
-      font-size:5rem;
-      font-weight:800;
-      line-height:.9;
-      margin-bottom:25px;
-    }
+.left{
+padding-top:120px;
+}
 
-    .left p{
-      max-width:500px;
-      color:#d6d6d6;
-      line-height:1.8;
-      margin-bottom:30px;
-    }
+.small-top{
+letter-spacing:6px;
+font-size:.8rem;
+margin-bottom:20px;
+color:#f5d9d9;
+}
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      background:#b40000;
-      padding:15px 28px;
-      border-radius:999px;
-      color:white;
-      text-decoration:none;
-      border:1px solid rgba(255,255,255,.1);
-      transition:.3s;
-    }
+.left-stack{
+font-size:5rem;
+font-weight:900;
+line-height:.9;
+margin-bottom:30px;
+}
 
-    .btn:hover{
-      transform:translateY(-5px);
-      background:#d30000;
-    }
+.left-stack span{
+display:block;
+}
 
-    .hero-image{
-      position:relative;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
+.left-line{
+width:120px;
+height:4px;
+background:#f4a4a4;
+border-radius:999px;
+margin:25px 0;
+}
 
-    .hero-image img{
-      width:100%;
-      max-width:650px;
-      object-fit:contain;
-      filter:drop-shadow(0 20px 80px rgba(255,0,0,.35));
-    }
+.social-mini{
+display:grid;
+grid-template-columns:80px auto;
+gap:10px;
+font-size:1rem;
+line-height:1.8;
+color:#f5d9d9;
+margin-bottom:40px;
+}
 
-    .side-character{
-      position:absolute;
-      right:-40px;
-      bottom:0;
-      width:260px;
-      z-index:3;
-    }
+.intro{
+max-width:420px;
+line-height:1.9;
+font-size:1rem;
+color:#f0dede;
+}
 
-    .section{
-      margin-top:80px;
-      padding:40px;
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:30px;
-      background:rgba(255,255,255,.03);
-      backdrop-filter:blur(20px);
-    }
+/* CENTER IMAGE */
 
-    .section-title{
-      font-size:2.2rem;
-      margin-bottom:30px;
-      color:#ff4040;
-      font-weight:800;
-    }
+.center-image{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:flex-end;
+min-height:900px;
+}
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:25px;
-    }
+.main-face{
+position:absolute;
+width:780px;
+max-width:none;
+z-index:2;
+filter:
+drop-shadow(0 0 80px rgba(255,0,0,.35))
+drop-shadow(0 0 120px rgba(255,0,0,.25));
+}
 
-    .card{
-      background:#0e0e0e;
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:25px;
-      overflow:hidden;
-      transition:.4s;
-    }
+/* RIGHT */
 
-    .card:hover{
-      transform:translateY(-8px);
-      border-color:#ff2d2d;
-    }
+.right-title{
+position:absolute;
+right:0;
+top:180px;
+text-align:right;
+z-index:5;
+}
 
-    .card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-    }
+.right-title .small{
+font-size:1.3rem;
+letter-spacing:2px;
+margin-bottom:10px;
+font-family:'Cormorant Garamond',serif;
+}
 
-    .card-content{
-      padding:25px;
-    }
+.right-title .big{
+font-size:8rem;
+font-weight:900;
+line-height:.85;
+color:#f4ece4;
+}
 
-    .card h3{
-      margin-bottom:10px;
-      font-size:1.5rem;
-    }
+/* BODY CHARACTER */
 
-    .card p{
-      color:#ccc;
-      line-height:1.7;
-      font-size:.95rem;
-    }
+.side-body{
+position:absolute;
+right:-60px;
+bottom:-40px;
+width:340px;
+z-index:4;
+filter:drop-shadow(0 0 50px rgba(255,0,0,.25));
+}
 
-    .skills{
-      display:grid;
-      grid-template-columns:1fr 120px;
-      gap:15px;
-    }
+/* SECTION */
 
-    .skill{
-      padding:15px;
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
+.section{
+padding:120px 80px;
+}
 
-    .contact-box{
-      margin-top:40px;
-      padding:35px;
-      border-radius:30px;
-      background:linear-gradient(135deg,#220000,#090909);
-      border:1px solid rgba(255,255,255,.08);
-    }
+/* TITLE */
 
-    .contact-box h2{
-      font-size:3rem;
-      margin-bottom:20px;
-    }
+.section-title{
+font-size:4rem;
+margin-bottom:50px;
+font-family:'Cormorant Garamond',serif;
+}
 
-    .email{
-      font-size:1.2rem;
-      margin-bottom:25px;
-      color:#ffb3b3;
-    }
+/* ABOUT */
 
-    footer{
-      margin-top:100px;
-      text-align:center;
-      padding:60px 0;
-      color:#ddd;
-    }
+.about{
+background:#180000;
+border-top:1px solid rgba(255,255,255,.06);
+border-bottom:1px solid rgba(255,255,255,.06);
+}
 
-    footer h2{
-      font-size:4rem;
-      line-height:1;
-      margin-bottom:20px;
-      font-family:'Cormorant Garamond',serif;
-    }
+.about p{
+max-width:1000px;
+line-height:2;
+font-size:1.1rem;
+color:#eadede;
+}
 
-    .socials{
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
-      margin-top:30px;
-    }
+/* CARDS */
 
-    .socials a{
-      color:white;
-      text-decoration:none;
-      padding:14px 20px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.08);
-      transition:.3s;
-    }
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
 
-    .socials a:hover{
-      background:#b40000;
-    }
+.card{
+background:#220000;
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+overflow:hidden;
+transition:.4s;
+text-decoration:none;
+color:white;
+}
 
-    @media(max-width:1100px){
+.card:hover{
+transform:translateY(-10px);
+border-color:#ff4f4f;
+}
 
-      .hero-content{
-        grid-template-columns:1fr;
-      }
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+display:block;
+}
 
-      .side-character{
-        display:none;
-      }
+.card-content{
+padding:28px;
+}
 
-      .left h1{
-        font-size:4rem;
-      }
+.card-content h3{
+font-size:2rem;
+margin-bottom:15px;
+}
 
-      .left .stack{
-        font-size:3rem;
-      }
+.card-content p{
+line-height:1.8;
+color:#eadede;
+}
 
-      .sidebar{
-        display:none;
-      }
+/* SKILLS */
 
-      .main{
-        margin-left:0;
-        width:100%;
-        padding:20px;
-      }
+.skills-grid{
+display:grid;
+grid-template-columns:1fr 120px;
+gap:15px;
+max-width:900px;
+}
 
-      body{
-        cursor:auto;
-      }
+.skill{
+padding:18px;
+border-bottom:1px solid rgba(255,255,255,.08);
+font-size:1rem;
+}
 
-      .cursor{
-        display:none;
-      }
+/* CONTENT */
 
-    }
+.content-links{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+}
 
-  </style>
+.content-links a{
+padding:18px 28px;
+border-radius:999px;
+background:#250000;
+border:1px solid rgba(255,255,255,.08);
+color:white;
+text-decoration:none;
+transition:.3s;
+}
+
+.content-links a:hover{
+background:#b10000;
+}
+
+/* CONTACT */
+
+.contact{
+background:
+linear-gradient(135deg,#2a0000,#120000);
+border-top:1px solid rgba(255,255,255,.06);
+}
+
+.contact-box{
+max-width:900px;
+}
+
+.contact h2{
+font-size:5rem;
+line-height:.95;
+margin-bottom:30px;
+font-family:'Cormorant Garamond',serif;
+}
+
+.contact p{
+font-size:1.2rem;
+margin-bottom:30px;
+color:#f2dede;
+}
+
+.contact-btn{
+display:inline-block;
+padding:20px 40px;
+border-radius:999px;
+background:#c20000;
+color:white;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+margin-bottom:40px;
+}
+
+.contact-btn:hover{
+transform:translateY(-5px);
+background:#ff1f1f;
+}
+
+/* SOCIALS */
+
+.socials{
+display:flex;
+flex-wrap:wrap;
+gap:18px;
+}
+
+.socials a{
+padding:14px 24px;
+border-radius:999px;
+border:1px solid rgba(255,255,255,.08);
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+.socials a:hover{
+background:#c00000;
+}
+
+/* FOOTER */
+
+.footer{
+padding:140px 40px;
+text-align:center;
+background:#0b0000;
+}
+
+.footer h2{
+font-size:6rem;
+line-height:.95;
+font-family:'Cormorant Garamond',serif;
+max-width:900px;
+margin:auto;
+}
+
+/* MOBILE */
+
+@media(max-width:1200px){
+
+.hero-grid{
+grid-template-columns:1fr;
+}
+
+.center-image{
+min-height:700px;
+}
+
+.right-title{
+position:relative;
+top:auto;
+right:auto;
+text-align:left;
+margin-top:40px;
+}
+
+.side-body{
+display:none;
+}
+
+.main-face{
+width:100%;
+max-width:600px;
+}
+
+}
+
+@media(max-width:768px){
+
+body{
+cursor:auto;
+}
+
+.cursor{
+display:none;
+}
+
+.hero{
+padding:30px;
+}
+
+.big-portfolio{
+font-size:22vw;
+left:10px;
+top:30px;
+}
+
+.left{
+padding-top:80px;
+}
+
+.left-stack{
+font-size:3.5rem;
+}
+
+.right-title .big{
+font-size:4rem;
+}
+
+.section{
+padding:80px 30px;
+}
+
+.section-title{
+font-size:3rem;
+}
+
+.contact h2{
+font-size:3.5rem;
+}
+
+.footer h2{
+font-size:3.2rem;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="cursor"></div>
 
-<div class="container">
+<div class="main">
 
-  <aside class="sidebar">
+<!-- HERO -->
 
-    <div class="logo">YV</div>
-    <div class="logo-small">by Yashasvi</div>
+<section class="hero">
 
-    <nav class="nav">
-      <a href="#about">ABOUT</a>
-      <a href="#campaigns">CAMPAIGNS</a>
-      <a href="#workflows">WORKFLOWS</a>
-      <a href="#skills">SKILLS</a>
-      <a href="#content">CONTENT</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
+<div class="big-portfolio">
+Portfolio
+</div>
 
-  </aside>
+<div class="hero-grid">
 
-  <main class="main">
+<!-- LEFT -->
 
-    <section class="hero">
+<div class="left">
 
-      <div class="portfolio-bg">Portfolio</div>
+<div class="small-top">
+CREATOR • FOUNDER • UGC CREATOR
+</div>
 
-      <div class="hero-content">
+<div class="left-stack">
+<span>UI</span>
+<span>UGC</span>
+<span>TECH</span>
+</div>
 
-        <div class="left">
+<div class="left-line"></div>
 
-          <h1>Yashasvibe</h1>
+<div class="social-mini">
+<div>inst:</div>
+<div>yashasvibe</div>
 
-          <div class="stack">
-            UI<br>
-            UGC TECH
-          </div>
+<div>tgr:</div>
+<div>yashasvibe</div>
+</div>
 
-          <p>
-            UGC creator, founder, and visual storyteller building cinematic content,
-            emotional interfaces, aesthetic-first campaigns, and digital experiences
-            inspired by fashion, technology, and internet culture.
-          </p>
+<div class="intro">
+UGC creator, founder, and visual storyteller building cinematic content,
+emotional interfaces, aesthetic-first campaigns, and digital experiences inspired by fashion,
+technology, internet culture, and futuristic creator brands.
+</div>
 
-          <a href="#campaigns" class="btn">
-            View Portfolio →
-          </a>
+</div>
 
-        </div>
+<!-- CENTER -->
 
-        <div class="hero-image">
+<div class="center-image">
 
-          <!-- MAIN FACE -->
-          <img src="YOUR_3D_FACE_IMAGE.png" alt="3D portrait">
+<img class="main-face" src="YOUR_3D_FACE.png">
 
-          <!-- SIDE FULL BODY -->
-          <img class="side-character" src="YOUR_FULL_BODY_IMAGE.png" alt="Yashasvi">
+<img class="side-body" src="YOUR_FULL_BODY.png">
 
-        </div>
+<div class="right-title">
+<div class="small">
+by Yashasvi Soni
+</div>
 
-      </div>
+<div class="big">
+UGC<br>
+CREATOR
+</div>
+</div>
 
-    </section>
+</div>
 
-    <section class="section" id="about">
+</div>
 
-      <div class="section-title">About Me</div>
+</section>
 
-      <p style="line-height:2;color:#ddd;font-size:1.05rem;">
-        I create cinematic internet experiences blending storytelling,
-        luxury aesthetics, UGC strategy, and emotional branding.
-        My work explores the intersection of creator culture,
-        AI tools, futuristic interfaces, and immersive visual identities.
-      </p>
+<!-- ABOUT -->
 
-    </section>
+<section class="section about">
 
-    <section class="section" id="campaigns">
+<h2 class="section-title">
+About Me
+</h2>
 
-      <div class="section-title">UGC + Brand Campaigns</div>
+<p>
+I create cinematic internet experiences blending storytelling, luxury aesthetics,
+UGC strategy, and emotional branding. My work explores the intersection of creator culture,
+AI tools, futuristic interfaces, and immersive visual identities.
+From aesthetic content systems to experimental workflow concepts,
+I focus on building what feels emotionally memorable instead of visually ordinary.
+</p>
 
-      <div class="cards">
+</section>
 
-        <a class="card" href="https://clove.created.app/account/signin">
+<!-- BRANDS -->
 
-          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+<section class="section">
 
-          <div class="card-content">
-            <h3>Lovable AI</h3>
-            <p>UGC creator campaign visuals and emotional branding systems.</p>
-          </div>
+<h2 class="section-title">
+UGC + Brand Campaigns
+</h2>
 
-        </a>
+<div class="cards">
 
-        <div class="card">
+<a class="card" href="https://clove.created.app/account/signin">
 
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
 
-          <div class="card-content">
-            <h3>Poppy AI</h3>
-            <p>Experimental AI aesthetic storytelling and creator-focused visuals.</p>
-          </div>
+<div class="card-content">
+<h3>Lovable AI</h3>
 
-        </div>
+<p>
+UGC creator campaign visuals and emotional branding systems.
+</p>
+</div>
 
-        <div class="card">
+</a>
 
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
+<a class="card" href="https://app.fuser.studio/view/878a7c66-2e24-49b5-bf1a-347b8b12aadd">
 
-          <div class="card-content">
-            <h3>Picsart</h3>
-            <p>Creative visual concepts and aesthetic content direction.</p>
-          </div>
+<img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop">
 
-        </div>
+<div class="card-content">
+<h3>Poppy AI</h3>
 
-      </div>
+<p>
+Experimental AI storytelling and creator-focused visuals.
+</p>
+</div>
 
-    </section>
+</a>
 
-    <section class="section" id="workflows">
+<a class="card" href="https://picsart.com">
 
-      <div class="section-title">Creative Workflows</div>
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
 
-      <div class="cards">
+<div class="card-content">
+<h3>Picsart</h3>
 
-        <a class="card" href="https://www.morphic.com/en/workflows/019dcaad-49cb-74cc-a990-6da92ec7fa27/clove-caf-emotion-scene">
+<p>
+Creative visual concepts and aesthetic content direction.
+</p>
+</div>
 
-          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop">
+</a>
 
-          <div class="card-content">
-            <h3>C.Love Café Emotion Scene</h3>
-            <p>Morphic workflow concept for cinematic storytelling.</p>
-          </div>
+</div>
 
-        </a>
+</section>
 
-        <a class="card" href="https://app.fuser.studio/view/878a7c66-2e24-49b5-bf1a-347b8b12aadd">
+<!-- WORKFLOWS -->
 
-          <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop">
+<section class="section">
 
-          <div class="card-content">
-            <h3>Fuser Studio Concept</h3>
-            <p>Experimental AI interface and futuristic creator workflow.</p>
-          </div>
+<h2 class="section-title">
+Creative Workflows
+</h2>
 
-        </a>
+<div class="cards">
 
-      </div>
+<a class="card" href="https://www.morphic.com/en/workflows/019dcaad-49cb-74cc-a990-6da92ec7fa27/clove-caf-emotion-scene">
 
-    </section>
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop">
 
-    <section class="section" id="skills">
+<div class="card-content">
+<h3>C.Love Café Emotion Scene</h3>
 
-      <div class="section-title">Skills & Software</div>
+<p>
+Morphic workflow concept for cinematic storytelling.
+</p>
 
-      <div class="skills">
+</div>
 
-        <div class="skill">Photoshop</div><div class="skill">9.5/10</div>
-        <div class="skill">After Effects</div><div class="skill">9/10</div>
-        <div class="skill">Premiere Pro</div><div class="skill">8.5/10</div>
-        <div class="skill">Poppy AI</div><div class="skill">9/10</div>
-        <div class="skill">Lovable AI</div><div class="skill">9.5/10</div>
-        <div class="skill">UGC Storytelling</div><div class="skill">9.8/10</div>
+</a>
 
-      </div>
+<a class="card" href="https://app.fuser.studio/view/878a7c66-2e24-49b5-bf1a-347b8b12aadd">
 
-    </section>
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
 
-    <section class="section" id="content">
+<div class="card-content">
+<h3>Fuser Studio Project</h3>
 
-      <div class="section-title">Content Showcase</div>
+<p>
+Experimental creator workflow and immersive visual system.
+</p>
 
-      <div class="socials">
+</div>
 
-        <a href="https://www.instagram.com/p/DYMv_2AsijG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">Instagram Post</a>
+</a>
 
-        <a href="https://www.instagram.com/reel/DX6t6_qo99P/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">Reel 1</a>
+</div>
 
-        <a href="https://www.instagram.com/reel/DXe5JqMiDn7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">Reel 2</a>
+</section>
 
-        <a href="https://www.instagram.com/reel/DYLrZnIM-HV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">Reel 3</a>
+<!-- SKILLS -->
 
-      </div>
+<section class="section">
 
-    </section>
+<h2 class="section-title">
+Skills & Software
+</h2>
 
-    <section class="contact-box" id="contact">
+<div class="skills-grid">
 
-      <h2>Let's Work Together</h2>
+<div class="skill">Photoshop</div>
+<div class="skill">9.5/10</div>
 
-      <div class="email">
-        ugcyashasvi@gmail.com
-      </div>
+<div class="skill">After Effects</div>
+<div class="skill">9/10</div>
 
-      <a href="mailto:ugcyashasvi@gmail.com" class="btn">
-        let's build Thing how u wish existed
-      </a>
+<div class="skill">Premiere Pro</div>
+<div class="skill">8.5/10</div>
 
-      <div class="socials">
+<div class="skill">Poppy AI</div>
+<div class="skill">9/10</div>
 
-        <a href="https://www.instagram.com/yashasvibe/">Instagram</a>
+<div class="skill">Lovable AI</div>
+<div class="skill">9.5/10</div>
 
-        <a href="https://www.linkedin.com/in/yashasvisoni">LinkedIn</a>
+<div class="skill">UGC Storytelling</div>
+<div class="skill">10/10</div>
 
-        <a href="https://x.com/yashasvibe">Twitter/X</a>
+<div class="skill">Creative Direction</div>
+<div class="skill">9/10</div>
 
-        <a href="https://www.youtube.com/@yashasvibe">YouTube</a>
+</div>
 
-        <a href="https://www.tiktok.com/@yashasvibe">TikTok</a>
+</section>
 
-      </div>
+<!-- CONTENT -->
 
-    </section>
+<section class="section">
 
-    <footer>
+<h2 class="section-title">
+Content Showcase
+</h2>
 
-      <h2>
-        Building and creating<br>
-        what I wish existed.
-      </h2>
+<div class="content-links">
 
-    </footer>
+<a href="https://www.instagram.com/p/DYMv_2AsijG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+Instagram Post
+</a>
 
-  </main>
+<a href="https://www.instagram.com/reel/DX6t6_qo99P/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+Instagram Reel 1
+</a>
+
+<a href="https://www.instagram.com/reel/DXe5JqMiDn7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+Instagram Reel 2
+</a>
+
+<a href="https://www.instagram.com/reel/DYLrZnIM-HV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+Instagram Reel 3
+</a>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="section contact">
+
+<div class="contact-box">
+
+<h2>
+Let's Build Things<br>
+How You Wish Existed
+</h2>
+
+<p>
+ugcyashasvi@gmail.com
+</p>
+
+<a class="contact-btn" href="mailto:ugcyashasvi@gmail.com">
+Contact Me
+</a>
+
+<div class="socials">
+
+<a href="https://www.instagram.com/yashasvibe/">
+Instagram
+</a>
+
+<a href="https://www.linkedin.com/in/yashasvisoni">
+LinkedIn
+</a>
+
+<a href="https://x.com/yashasvibe">
+Twitter/X
+</a>
+
+<a href="https://www.youtube.com/@yashasvibe">
+YouTube
+</a>
+
+<a href="https://www.tiktok.com/@yashasvibe">
+TikTok
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<h2>
+Building and creating<br>
+what I wish existed.
+</h2>
+
+</footer>
 
 </div>
 
@@ -599,8 +804,8 @@ const cursor = document.querySelector(".cursor");
 
 document.addEventListener("mousemove",(e)=>{
 
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
+cursor.style.left = e.clientX + "px";
+cursor.style.top = e.clientY + "px";
 
 });
 
