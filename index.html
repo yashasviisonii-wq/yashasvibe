@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Yashasvibe — Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -26,21 +26,23 @@ scroll-behavior:smooth;
 body{
 background:#120000;
 font-family:'Inter',sans-serif;
-overflow-x:hidden;
 color:white;
-cursor:none;
+overflow-x:hidden;
 }
 
-/* GRAIN */
+/* SCROLLBAR */
 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-opacity:.12;
-pointer-events:none;
-z-index:999;
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#140000;
+}
+
+::-webkit-scrollbar-thumb{
+background:#7a0000;
+border-radius:999px;
 }
 
 /* CURSOR */
@@ -48,61 +50,53 @@ z-index:999;
 .cursor{
 width:18px;
 height:18px;
-border:1px solid white;
+border:2px solid #fff;
 border-radius:50%;
 position:fixed;
 pointer-events:none;
+z-index:99999;
 transform:translate(-50%,-50%);
 mix-blend-mode:difference;
-z-index:9999;
-}
-
-/* MAIN */
-
-.main{
-width:100%;
-min-height:100vh;
+transition:transform .1s ease;
 }
 
 /* HERO */
 
 .hero{
 min-height:100vh;
-padding:60px;
+padding:40px 60px;
 position:relative;
 overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;
 background:
-radial-gradient(circle at top,#6e0000 0%,#1b0000 40%,#090909 100%);
+radial-gradient(circle at top,#7a0000 0%,#280000 45%,#080808 100%);
 }
 
-/* BIG PORTFOLIO */
+/* BIG TEXT */
 
-.big-portfolio{
+.big-bg{
 position:absolute;
-top:10px;
-left:40px;
-font-size:15vw;
-line-height:.8;
+top:-20px;
+left:20px;
+font-size:16vw;
 font-family:'Cormorant Garamond',serif;
-color:rgba(60,0,0,.7);
-z-index:1;
 font-weight:700;
+line-height:.8;
+letter-spacing:-10px;
+color:rgba(0,0,0,.45);
+z-index:1;
 }
 
 /* HERO GRID */
 
 .hero-grid{
-width:100%;
 max-width:1500px;
+margin:auto;
 display:grid;
 grid-template-columns:420px 1fr;
-align-items:center;
 gap:20px;
+align-items:center;
 position:relative;
-z-index:3;
+z-index:5;
 }
 
 /* LEFT */
@@ -111,30 +105,46 @@ z-index:3;
 padding-top:120px;
 }
 
-.small-top{
-letter-spacing:6px;
-font-size:.8rem;
-margin-bottom:20px;
-color:#f5d9d9;
+.topline{
+font-size:.75rem;
+letter-spacing:5px;
+margin-bottom:25px;
+color:#f6dede;
 }
 
-.left-stack{
+.main-title{
+font-size:7rem;
+line-height:.9;
+font-family:'Cormorant Garamond',serif;
+font-weight:700;
+color:#fff3ea;
+margin-bottom:5px;
+}
+
+.byline{
+font-size:1rem;
+letter-spacing:2px;
+margin-bottom:40px;
+color:#f0dada;
+}
+
+.stack{
 font-size:5rem;
 font-weight:900;
 line-height:.9;
-margin-bottom:30px;
+margin-bottom:20px;
 }
 
-.left-stack span{
+.stack span{
 display:block;
 }
 
-.left-line{
+.line{
 width:120px;
 height:4px;
-background:#f4a4a4;
+background:#ffb6b6;
 border-radius:999px;
-margin:25px 0;
+margin:30px 0;
 }
 
 .social-mini{
@@ -143,259 +153,251 @@ grid-template-columns:80px auto;
 gap:10px;
 font-size:1rem;
 line-height:1.8;
-color:#f5d9d9;
-margin-bottom:40px;
+color:#f3dada;
+margin-bottom:35px;
 }
 
 .intro{
 max-width:420px;
-line-height:1.9;
+line-height:2;
 font-size:1rem;
-color:#f0dede;
+color:#f2dfdf;
 }
 
-/* CENTER IMAGE */
+/* CENTER */
 
-.center-image{
+.center{
 position:relative;
+min-height:900px;
 display:flex;
 justify-content:center;
 align-items:flex-end;
-min-height:900px;
 }
+
+/* MAIN FACE */
 
 .main-face{
 position:absolute;
-width:780px;
-max-width:none;
+width:760px;
 z-index:2;
+object-fit:contain;
 filter:
-drop-shadow(0 0 80px rgba(255,0,0,.35))
+drop-shadow(0 0 70px rgba(255,0,0,.35))
 drop-shadow(0 0 120px rgba(255,0,0,.25));
 }
 
-/* RIGHT */
+/* SIDE IMAGE */
+
+.side-body{
+position:absolute;
+right:-40px;
+bottom:-10px;
+width:320px;
+z-index:5;
+object-fit:contain;
+filter:
+drop-shadow(0 0 50px rgba(255,0,0,.25));
+}
+
+/* RIGHT TITLE */
 
 .right-title{
 position:absolute;
 right:0;
-top:180px;
+top:150px;
 text-align:right;
-z-index:5;
+z-index:8;
 }
 
 .right-title .small{
-font-size:1.3rem;
-letter-spacing:2px;
+font-size:1rem;
+letter-spacing:3px;
 margin-bottom:10px;
-font-family:'Cormorant Garamond',serif;
+color:#f3dede;
 }
 
 .right-title .big{
 font-size:8rem;
 font-weight:900;
 line-height:.85;
-color:#f4ece4;
+color:#f7efe8;
 }
 
-/* BODY CHARACTER */
-
-.side-body{
-position:absolute;
-right:-60px;
-bottom:-40px;
-width:340px;
-z-index:4;
-filter:drop-shadow(0 0 50px rgba(255,0,0,.25));
-}
-
-/* SECTION */
+/* SECTIONS */
 
 .section{
-padding:120px 80px;
+padding:120px 60px;
+max-width:1500px;
+margin:auto;
 }
-
-/* TITLE */
 
 .section-title{
 font-size:4rem;
-margin-bottom:50px;
 font-family:'Cormorant Garamond',serif;
+margin-bottom:60px;
+}
+
+/* BRANDS */
+
+.brands{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.brand-card{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+border-radius:30px;
+padding:40px;
+transition:.4s;
+backdrop-filter:blur(10px);
+}
+
+.brand-card:hover{
+transform:translateY(-10px);
+border-color:#ff4a4a;
+}
+
+.brand-card img{
+width:100%;
+height:180px;
+object-fit:contain;
+margin-bottom:25px;
+}
+
+.brand-card h3{
+font-size:2rem;
+margin-bottom:10px;
+}
+
+.brand-card p{
+color:#d6bcbc;
+line-height:1.8;
 }
 
 /* ABOUT */
 
 .about{
-background:#180000;
-border-top:1px solid rgba(255,255,255,.06);
-border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.about p{
-max-width:1000px;
+background:rgba(255,255,255,.04);
+border-radius:40px;
+padding:60px;
+border:1px solid rgba(255,255,255,.08);
 line-height:2;
 font-size:1.1rem;
-color:#eadede;
-}
-
-/* CARDS */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
-}
-
-.card{
-background:#220000;
-border:1px solid rgba(255,255,255,.08);
-border-radius:28px;
-overflow:hidden;
-transition:.4s;
-text-decoration:none;
-color:white;
-}
-
-.card:hover{
-transform:translateY(-10px);
-border-color:#ff4f4f;
-}
-
-.card img{
-width:100%;
-height:260px;
-object-fit:cover;
-display:block;
-}
-
-.card-content{
-padding:28px;
-}
-
-.card-content h3{
-font-size:2rem;
-margin-bottom:15px;
-}
-
-.card-content p{
-line-height:1.8;
-color:#eadede;
+color:#f1dcdc;
 }
 
 /* SKILLS */
 
 .skills-grid{
 display:grid;
-grid-template-columns:1fr 120px;
-gap:15px;
-max-width:900px;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+margin-top:40px;
 }
 
 .skill{
-padding:18px;
-border-bottom:1px solid rgba(255,255,255,.08);
-font-size:1rem;
-}
-
-/* CONTENT */
-
-.content-links{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-}
-
-.content-links a{
-padding:18px 28px;
-border-radius:999px;
-background:#250000;
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:25px;
 border:1px solid rgba(255,255,255,.08);
-color:white;
-text-decoration:none;
-transition:.3s;
 }
 
-.content-links a:hover{
-background:#b10000;
+.skill-top{
+display:flex;
+justify-content:space-between;
+margin-bottom:15px;
+}
+
+.bar{
+height:10px;
+border-radius:999px;
+background:rgba(255,255,255,.08);
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+background:linear-gradient(90deg,#ff4d4d,#ff8c8c);
+border-radius:999px;
 }
 
 /* CONTACT */
 
 .contact{
-background:
-linear-gradient(135deg,#2a0000,#120000);
-border-top:1px solid rgba(255,255,255,.06);
-}
-
-.contact-box{
-max-width:900px;
+padding:140px 60px;
+text-align:center;
 }
 
 .contact h2{
-font-size:5rem;
-line-height:.95;
-margin-bottom:30px;
+font-size:6rem;
+line-height:1;
 font-family:'Cormorant Garamond',serif;
+margin-bottom:30px;
 }
 
 .contact p{
-font-size:1.2rem;
-margin-bottom:30px;
-color:#f2dede;
-}
-
-.contact-btn{
-display:inline-block;
-padding:20px 40px;
-border-radius:999px;
-background:#c20000;
-color:white;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
+max-width:700px;
+margin:auto;
+line-height:2;
+color:#e8d2d2;
 margin-bottom:40px;
 }
 
-.contact-btn:hover{
+.email{
+font-size:1.2rem;
+margin-bottom:40px;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:18px 40px;
+border-radius:999px;
+background:#fff3ea;
+color:#200000;
+text-decoration:none;
+font-weight:700;
+transition:.4s;
+}
+
+.btn:hover{
 transform:translateY(-5px);
-background:#ff1f1f;
 }
 
 /* SOCIALS */
 
 .socials{
+margin-top:50px;
 display:flex;
+justify-content:center;
 flex-wrap:wrap;
-gap:18px;
+gap:20px;
 }
 
 .socials a{
-padding:14px 24px;
+padding:14px 28px;
 border-radius:999px;
-border:1px solid rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.12);
 text-decoration:none;
 color:white;
-transition:.3s;
+transition:.4s;
 }
 
 .socials a:hover{
-background:#c00000;
+background:white;
+color:black;
 }
 
 /* FOOTER */
 
 .footer{
-padding:140px 40px;
+padding:40px;
 text-align:center;
-background:#0b0000;
-}
-
-.footer h2{
-font-size:6rem;
-line-height:.95;
-font-family:'Cormorant Garamond',serif;
-max-width:900px;
-margin:auto;
+color:#bfa9a9;
+font-size:.95rem;
 }
 
 /* MOBILE */
@@ -406,75 +408,69 @@ margin:auto;
 grid-template-columns:1fr;
 }
 
-.center-image{
+.center{
 min-height:700px;
 }
 
-.right-title{
-position:relative;
-top:auto;
-right:auto;
-text-align:left;
-margin-top:40px;
+.main-face{
+width:100%;
+max-width:650px;
 }
 
 .side-body{
 display:none;
 }
 
-.main-face{
-width:100%;
-max-width:600px;
+.right-title{
+position:relative;
+right:auto;
+top:auto;
+text-align:left;
+margin-top:30px;
+}
+
+.brands{
+grid-template-columns:1fr;
+}
+
+.skills-grid{
+grid-template-columns:1fr;
+}
+
+.contact h2{
+font-size:4rem;
 }
 
 }
 
 @media(max-width:768px){
 
-body{
-cursor:auto;
-}
-
-.cursor{
-display:none;
-}
-
 .hero{
 padding:30px;
 }
 
-.big-portfolio{
-font-size:22vw;
-left:10px;
-top:30px;
+.section{
+padding:90px 30px;
 }
 
-.left{
-padding-top:80px;
+.main-title{
+font-size:4rem;
 }
 
-.left-stack{
-font-size:3.5rem;
+.stack{
+font-size:3rem;
+}
+
+.big-bg{
+font-size:26vw;
 }
 
 .right-title .big{
 font-size:4rem;
 }
 
-.section{
-padding:80px 30px;
-}
-
-.section-title{
-font-size:3rem;
-}
-
 .contact h2{
-font-size:3.5rem;
-}
-
-.footer h2{
-font-size:3.2rem;
+font-size:3rem;
 }
 
 }
@@ -486,13 +482,11 @@ font-size:3.2rem;
 
 <div class="cursor"></div>
 
-<div class="main">
-
 <!-- HERO -->
 
 <section class="hero">
 
-<div class="big-portfolio">
+<div class="big-bg">
 Portfolio
 </div>
 
@@ -502,74 +496,74 @@ Portfolio
 
 <div class="left">
 
-<div class="small-top">
-CREATOR • FOUNDER • UGC CREATOR
+<div class="topline">
+UGC CREATOR • FOUNDER • VISUAL STORYTELLER
 </div>
 
-<div class="left-stack">
+<h1 class="main-title">
+Yashasvibe
+</h1>
+
+<div class="byline">
+by Yashasvi Soni
+</div>
+
+<div class="stack">
 <span>UI</span>
 <span>UGC</span>
 <span>TECH</span>
 </div>
 
-<div class="left-line"></div>
+<div class="line"></div>
 
 <div class="social-mini">
+
 <div>inst:</div>
 <div>yashasvibe</div>
 
 <div>tgr:</div>
 <div>yashasvibe</div>
+
 </div>
 
 <div class="intro">
-UGC creator, founder, and visual storyteller building cinematic content,
-emotional interfaces, aesthetic-first campaigns, and digital experiences inspired by fashion,
-technology, internet culture, and futuristic creator brands.
+UGC creator, founder, and cinematic visual storyteller building emotional creator brands, luxury-tech campaigns, immersive interfaces, and internet experiences inspired by fashion editorials, AI, cinematic visuals, and future-facing storytelling.
 </div>
 
 </div>
 
 <!-- CENTER -->
 
-<div class="center-image">
+<div class="center">
 
-<img class="main-face" src="YOUR_3D_FACE.png">
+<img
+class="main-face"
+src="./images/yashasvi-3d.png"
+alt="Yashasvi 3D"
+/>
 
-<img class="side-body" src="YOUR_FULL_BODY.png">
+<img
+class="side-body"
+src="./images/yashasvi-body.png"
+alt="Yashasvi"
+/>
 
 <div class="right-title">
+
 <div class="small">
-by Yashasvi Soni
+YASHASVIBE
 </div>
 
 <div class="big">
 UGC<br>
 CREATOR
 </div>
-</div>
 
 </div>
 
 </div>
 
-</section>
-
-<!-- ABOUT -->
-
-<section class="section about">
-
-<h2 class="section-title">
-About Me
-</h2>
-
-<p>
-I create cinematic internet experiences blending storytelling, luxury aesthetics,
-UGC strategy, and emotional branding. My work explores the intersection of creator culture,
-AI tools, futuristic interfaces, and immersive visual identities.
-From aesthetic content systems to experimental workflow concepts,
-I focus on building what feels emotionally memorable instead of visually ordinary.
-</p>
+</div>
 
 </section>
 
@@ -581,94 +575,72 @@ I focus on building what feels emotionally memorable instead of visually ordinar
 UGC + Brand Campaigns
 </h2>
 
-<div class="cards">
+<div class="brands">
 
-<a class="card" href="https://clove.created.app/account/signin">
+<div class="brand-card">
 
-<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+<img src="./images/lovable-logo.png" alt="Lovable AI">
 
-<div class="card-content">
 <h3>Lovable AI</h3>
 
 <p>
-UGC creator campaign visuals and emotional branding systems.
+Creative UGC concepts, aesthetic storytelling,
+and emotionally-driven creator visuals.
 </p>
+
 </div>
 
-</a>
+<div class="brand-card">
 
-<a class="card" href="https://app.fuser.studio/view/878a7c66-2e24-49b5-bf1a-347b8b12aadd">
+<img src="./images/poppy-logo.png" alt="Poppy AI">
 
-<img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop">
-
-<div class="card-content">
 <h3>Poppy AI</h3>
 
 <p>
-Experimental AI storytelling and creator-focused visuals.
+Experimental AI-first visual concepts,
+branding aesthetics, and storytelling campaigns.
 </p>
+
 </div>
 
-</a>
+<div class="brand-card">
 
-<a class="card" href="https://picsart.com">
+<img src="./images/picsart-logo.png" alt="Picsart">
 
-<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
-
-<div class="card-content">
 <h3>Picsart</h3>
 
 <p>
-Creative visual concepts and aesthetic content direction.
+Creator-focused visual edits, cinematic designs,
+and aesthetic social-first content systems.
 </p>
-</div>
 
-</a>
+</div>
 
 </div>
 
 </section>
 
-<!-- WORKFLOWS -->
+<!-- ABOUT -->
 
 <section class="section">
 
 <h2 class="section-title">
-Creative Workflows
+About Me
 </h2>
 
-<div class="cards">
+<div class="about">
+I’m Yashasvi Soni — also known online as Yashasvibe.
+I create cinematic internet experiences, UGC concepts,
+luxury-tech aesthetics, emotionally-driven visuals,
+and future-inspired creator branding.
 
-<a class="card" href="https://www.morphic.com/en/workflows/019dcaad-49cb-74cc-a990-6da92ec7fa27/clove-caf-emotion-scene">
+My work blends storytelling, AI tools, visual direction,
+fashion-inspired design, and immersive digital experiences
+to create things that feel emotional, futuristic,
+and unforgettable.
 
-<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop">
-
-<div class="card-content">
-<h3>C.Love Café Emotion Scene</h3>
-
-<p>
-Morphic workflow concept for cinematic storytelling.
-</p>
-
-</div>
-
-</a>
-
-<a class="card" href="https://app.fuser.studio/view/878a7c66-2e24-49b5-bf1a-347b8b12aadd">
-
-<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop">
-
-<div class="card-content">
-<h3>Fuser Studio Project</h3>
-
-<p>
-Experimental creator workflow and immersive visual system.
-</p>
-
-</div>
-
-</a>
-
+I’m currently building creative systems, UGC campaigns,
+AI-first concepts, and visual worlds inspired by what I wish existed online.
 </div>
 
 </section>
@@ -683,56 +655,65 @@ Skills & Software
 
 <div class="skills-grid">
 
-<div class="skill">Photoshop</div>
-<div class="skill">9.5/10</div>
-
-<div class="skill">After Effects</div>
-<div class="skill">9/10</div>
-
-<div class="skill">Premiere Pro</div>
-<div class="skill">8.5/10</div>
-
-<div class="skill">Poppy AI</div>
-<div class="skill">9/10</div>
-
-<div class="skill">Lovable AI</div>
-<div class="skill">9.5/10</div>
-
-<div class="skill">UGC Storytelling</div>
-<div class="skill">10/10</div>
-
-<div class="skill">Creative Direction</div>
-<div class="skill">9/10</div>
-
+<div class="skill">
+<div class="skill-top">
+<span>Creative Direction</span>
+<span>9.5/10</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:95%"></div>
+</div>
 </div>
 
-</section>
+<div class="skill">
+<div class="skill-top">
+<span>UGC Storytelling</span>
+<span>9/10</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:90%"></div>
+</div>
+</div>
 
-<!-- CONTENT -->
+<div class="skill">
+<div class="skill-top">
+<span>Brand Aesthetics</span>
+<span>8.8/10</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:88%"></div>
+</div>
+</div>
 
-<section class="section">
+<div class="skill">
+<div class="skill-top">
+<span>Visual Design</span>
+<span>9.2/10</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:92%"></div>
+</div>
+</div>
 
-<h2 class="section-title">
-Content Showcase
-</h2>
+<div class="skill">
+<div class="skill-top">
+<span>AI Creative Workflows</span>
+<span>8.9/10</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:89%"></div>
+</div>
+</div>
 
-<div class="content-links">
-
-<a href="https://www.instagram.com/p/DYMv_2AsijG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
-Instagram Post
-</a>
-
-<a href="https://www.instagram.com/reel/DX6t6_qo99P/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
-Instagram Reel 1
-</a>
-
-<a href="https://www.instagram.com/reel/DXe5JqMiDn7/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
-Instagram Reel 2
-</a>
-
-<a href="https://www.instagram.com/reel/DYLrZnIM-HV/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
-Instagram Reel 3
-</a>
+<div class="skill">
+<div class="skill-top">
+<span>Content Strategy</span>
+<span>8.7/10</span>
+</div>
+<div class="bar">
+<div class="fill" style="width:87%"></div>
+</div>
+</div>
 
 </div>
 
@@ -740,483 +721,72 @@ Instagram Reel 3
 
 <!-- CONTACT -->
 
-<section class="section contact">
-
-<div class="contact-box">
-
-<h2>
-Let's Build Things<br>
-How You Wish Existed
-</h2>
-
-<p>
-ugcyashasvi@gmail.com
-</p>
-
-<a class="contact-btn" href="mailto:ugcyashasvi@gmail.com">
-Contact Me
-</a>
-
-<div class="socials">
-
-<a href="https://www.instagram.com/yashasvibe/">
-Instagram
-</a>
-
-<a href="https://www.linkedin.com/in/yashasvisoni">
-LinkedIn
-</a>
-
-<a href="https://x.com/yashasvibe">
-Twitter/X
-</a>
-
-<a href="https://www.youtube.com/@yashasvibe">
-YouTube
-</a>
-
-<a href="https://www.tiktok.com/@yashasvibe">
-TikTok
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer class="footer">
+<section class="contact">
 
 <h2>
 Building and creating<br>
 what I wish existed.
 </h2>
 
-</footer>
+<p>
+Creating cinematic internet experiences,
+future-inspired visuals, emotionally-driven campaigns,
+and aesthetic-first creator brands.
+</p>
+
+<div class="email">
+ugcyashasvi@gmail.com
+</div>
+
+<a
+href="mailto:ugcyashasvi@gmail.com"
+class="btn"
+>
+let's build Thing how u wish existed
+</a>
+
+<div class="socials">
+
+<a href="https://www.instagram.com/yashasvibe/" target="_blank">
+Instagram
+</a>
+
+<a href="https://www.youtube.com/@yashasvibe" target="_blank">
+YouTube
+</a>
+
+<a href="https://www.linkedin.com/in/yashasvisoni" target="_blank">
+LinkedIn
+</a>
+
+<a href="https://x.com/yashasvibe" target="_blank">
+Twitter
+</a>
+
+<a href="https://www.tiktok.com/@yashasvibe" target="_blank">
+TikTok
+</a>
 
 </div>
 
+</section>
+
+<div class="footer">
+© Yashasvibe — by Yashasvi Soni
+</div>
+
+<!-- CURSOR SCRIPT -->
+
 <script>
 
-const cursor = document.querySelector(".cursor");
+const cursor = document.querySelector('.cursor');
 
-document.addEventListener("mousemove",(e)=>{
-
-cursor.style.left = e.clientX + "px";
-cursor.style.top = e.clientY + "px";
-
+document.addEventListener('mousemove',(e)=>{
+cursor.style.left = e.clientX + 'px';
+cursor.style.top = e.clientY + 'px';
 });
 
 </script>
 
 </body>
 </html>
-<!-- ========================================= -->
-<!-- REPLACE ONLY THIS HERO SECTION -->
-<!-- ========================================= -->
-
-<section class="hero">
-
-  <!-- BIG BG TEXT -->
-  <div class="big-portfolio">
-    Portfolio
-  </div>
-
-  <div class="hero-grid">
-
-    <!-- LEFT CONTENT -->
-
-    <div class="left">
-
-      <div class="small-top">
-        UGC CREATOR • FOUNDER • VISUAL STORYTELLER
-      </div>
-
-      <!-- YASHASVIBE HEADING -->
-
-      <h1 class="yashasvi-heading">
-        Yashasvibe
-      </h1>
-
-      <div class="byline">
-        by Yashasvi Soni
-      </div>
-
-      <!-- STACK -->
-
-      <div class="left-stack">
-        <span>UI</span>
-        <span>UGC</span>
-        <span>TECH</span>
-      </div>
-
-      <div class="left-line"></div>
-
-      <!-- MINI SOCIALS -->
-
-      <div class="social-mini">
-
-        <div>inst:</div>
-        <div>yashasvibe</div>
-
-        <div>tgr:</div>
-        <div>yashasvibe</div>
-
-      </div>
-
-      <!-- INTRO -->
-
-      <div class="intro">
-        UGC creator, founder, and cinematic visual storyteller building emotional
-        creator brands, aesthetic-first campaigns, immersive interfaces,
-        and internet experiences inspired by fashion, AI, luxury visuals,
-        and future-facing storytelling.
-      </div>
-
-    </div>
-
-    <!-- CENTER IMAGE -->
-
-    <div class="center-image">
-
-      <!-- MAIN 3D FACE -->
-
-      <img
-        class="main-face"
-        src="./images/yashasvi-3d.png"
-        alt="Yashasvi 3D Portrait"
-      >
-
-      <!-- SIDE BODY PNG -->
-
-      <img
-        class="side-body"
-        src="./images/yashasvi-body.png"
-        alt="Yashasvi"
-      >
-
-      <!-- RIGHT TITLE -->
-
-      <div class="right-title">
-
-        <div class="small">
-          YASHASVIBE
-        </div>
-
-        <div class="big">
-          UGC<br>
-          CREATOR
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ========================================= -->
-<!-- REPLACE THIS CSS TOO -->
-<!-- ========================================= -->
-
-<style>
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-padding:40px 60px;
-position:relative;
-overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;
-background:
-radial-gradient(circle at top,#7b0000 0%,#240000 45%,#070707 100%);
-}
-
-/* BIG BG TEXT */
-
-.big-portfolio{
-position:absolute;
-top:0;
-left:30px;
-font-size:14vw;
-line-height:.8;
-font-family:'Cormorant Garamond',serif;
-font-weight:700;
-color:rgba(0,0,0,.45);
-z-index:1;
-letter-spacing:-8px;
-}
-
-/* HERO GRID */
-
-.hero-grid{
-width:100%;
-max-width:1550px;
-display:grid;
-grid-template-columns:420px 1fr;
-gap:20px;
-align-items:center;
-position:relative;
-z-index:5;
-}
-
-/* LEFT */
-
-.left{
-padding-top:100px;
-position:relative;
-z-index:5;
-}
-
-.small-top{
-font-size:.75rem;
-letter-spacing:5px;
-color:#f5dcdc;
-margin-bottom:20px;
-}
-
-/* YASHASVIBE */
-
-.yashasvi-heading{
-font-size:7rem;
-line-height:.9;
-font-family:'Cormorant Garamond',serif;
-font-weight:700;
-margin-bottom:10px;
-color:#fff3ea;
-}
-
-/* BYLINE */
-
-.byline{
-font-size:1rem;
-letter-spacing:2px;
-margin-bottom:35px;
-color:#f2d5d5;
-}
-
-/* STACK */
-
-.left-stack{
-font-size:5rem;
-font-weight:900;
-line-height:.9;
-margin-bottom:20px;
-}
-
-.left-stack span{
-display:block;
-}
-
-/* LINE */
-
-.left-line{
-width:130px;
-height:4px;
-background:#ffb0b0;
-border-radius:999px;
-margin:30px 0;
-}
-
-/* SOCIAL MINI */
-
-.social-mini{
-display:grid;
-grid-template-columns:80px auto;
-gap:10px;
-font-size:1rem;
-line-height:1.8;
-color:#f4dada;
-margin-bottom:40px;
-}
-
-/* INTRO */
-
-.intro{
-max-width:420px;
-line-height:2;
-font-size:1rem;
-color:#f1dfdf;
-}
-
-/* CENTER IMAGE */
-
-.center-image{
-position:relative;
-display:flex;
-justify-content:center;
-align-items:flex-end;
-min-height:900px;
-}
-
-/* MAIN FACE */
-
-.main-face{
-position:absolute;
-width:780px;
-max-width:none;
-z-index:2;
-object-fit:contain;
-filter:
-drop-shadow(0 0 80px rgba(255,0,0,.35))
-drop-shadow(0 0 120px rgba(255,0,0,.25));
-}
-
-/* SIDE BODY */
-
-.side-body{
-position:absolute;
-right:-60px;
-bottom:-20px;
-width:340px;
-z-index:4;
-object-fit:contain;
-filter:
-drop-shadow(0 0 50px rgba(255,0,0,.2));
-}
-
-/* RIGHT */
-
-.right-title{
-position:absolute;
-right:0;
-top:160px;
-text-align:right;
-z-index:6;
-}
-
-.right-title .small{
-font-size:1.1rem;
-letter-spacing:3px;
-margin-bottom:10px;
-color:#f2dcdc;
-}
-
-.right-title .big{
-font-size:8rem;
-line-height:.85;
-font-weight:900;
-color:#f4ece4;
-}
-
-/* MOBILE */
-
-@media(max-width:1200px){
-
-.hero-grid{
-grid-template-columns:1fr;
-}
-
-.right-title{
-position:relative;
-right:auto;
-top:auto;
-text-align:left;
-margin-top:30px;
-}
-
-.side-body{
-display:none;
-}
-
-.main-face{
-width:100%;
-max-width:600px;
-}
-
-}
-
-@media(max-width:768px){
-
-.hero{
-padding:30px;
-}
-
-.big-portfolio{
-font-size:24vw;
-left:0;
-top:20px;
-}
-
-.yashasvi-heading{
-font-size:4rem;
-}
-
-.left-stack{
-font-size:3rem;
-}
-
-.right-title .big{
-font-size:4rem;
-}
-
-}
-
-</style>
-
-<!-- ========================================= -->
-<!-- REPLACE BRAND SECTION WITH THIS -->
-<!-- ========================================= -->
-
-<section class="section">
-
-  <h2 class="section-title">
-    UGC + Brand Campaigns
-  </h2>
-
-  <div class="cards">
-
-    <!-- LOVABLE -->
-
-    <div class="card">
-
-      <img
-        src="./images/lovable-logo.png"
-        alt="Lovable AI"
-      >
-
-      <div class="card-content">
-        <h3>Lovable AI</h3>
-      </div>
-
-    </div>
-
-    <!-- POPPY -->
-
-    <div class="card">
-
-      <img
-        src="./images/poppy-logo.png"
-        alt="Poppy AI"
-      >
-
-      <div class="card-content">
-        <h3>Poppy AI</h3>
-      </div>
-
-    </div>
-
-    <!-- PICSART -->
-
-    <div class="card">
-
-      <img
-        src="./images/picsart-logo.png"
-        alt="Picsart"
-      >
-
-      <div class="card-content">
-        <h3>Picsart</h3>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
