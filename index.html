@@ -1,262 +1,684 @@
-export default function PortfolioWebsite() {
-  const projects = [
-    {
-      title: "Cinematic AI Experience",
-      type: "Creative Direction",
-      description:
-        "Experimental AI-driven interface concepts designed with cinematic storytelling, emotional depth, and immersive motion.",
-    },
-    {
-      title: "Luxury UGC Campaign",
-      type: "UGC + Branding",
-      description:
-        "High-converting luxury aesthetic content blending editorial visuals with emotionally-driven brand storytelling.",
-    },
-    {
-      title: "Founder Brand Identity",
-      type: "Personal Brand",
-      description:
-        "Built a complete visual identity system combining strategy, creator positioning, and premium design language.",
-    },
-    {
-      title: "Experimental Web Concept",
-      type: "Web Design",
-      description:
-        "A futuristic website concept inspired by fashion editorials, AI interfaces, and cinematic UI systems.",
-    },
-  ];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yashasvibe — Tech UGC Creator</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #350404;
+    --white: #ffffff;
+    --accent: #bb947b;
+    --accent2: #cac4b4;
+    --gray2: #5c1010;
+    --muted: #cac4b4;
+    --surface: #420606;
+    --surface2: #2a0303;
+    --gold: #d4a847;
+    --gold-muted: rgba(212,168,71,0.15);
+  }
 
-  const collaborations = [
-    "Luxury Aesthetic Projects",
-    "AI Concepts",
-    "Creative Direction",
-    "UGC Campaigns",
-    "Personal Branding",
-    "Digital Experiences",
-  ];
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-  return (
-    <div className="bg-[#2b0000] text-[#f6e6d2] min-h-screen overflow-x-hidden selection:bg-[#f6e6d2] selection:text-[#2b0000] cursor-none">
-      {/* CUSTOM CURSOR */}
-      <div className="fixed w-6 h-6 rounded-full border border-[#f6e6d2] pointer-events-none z-50 mix-blend-difference top-0 left-0 hidden md:block" />
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-      {/* HERO */}
-      <section className="relative px-6 md:px-16 pt-10 pb-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#6b0000] via-[#2b0000] to-black opacity-80" />
+  ::selection { background: var(--accent); color: var(--white); }
 
-        <div className="relative z-10 border border-[#5d1f1f] rounded-[2rem] p-8 md:p-14 backdrop-blur-md bg-[#3a0000]/40 shadow-2xl">
-          <div className="flex flex-col lg:flex-row gap-12 items-center">
-            <div className="flex-1">
-              <p className="uppercase tracking-[0.4em] text-sm text-[#f6d3c0] mb-6">
-                Creator • Founder • Creative Director
-              </p>
+  .noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
 
-              <h1
-                className="leading-none font-black text-6xl md:text-8xl mb-6"
-                style={{ fontFamily: 'serif' }}
-              >
-                Portfolio
-              </h1>
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem 2rem;
+    position: relative;
+    border-bottom: 1px solid var(--gray2);
+  }
 
-              <div className="space-y-2 text-2xl md:text-4xl font-bold uppercase tracking-wide mb-8">
-                <p>UX</p>
-                <p>UI</p>
-                <p>WEB</p>
-              </div>
+  .hero-tag {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
 
-              <p className="text-[#e6c8b5] leading-relaxed max-w-xl text-lg mb-10">
-                Building cinematic digital experiences, emotional interfaces,
-                luxury creator brands, and futuristic concepts that blend art,
-                storytelling, and technology.
-              </p>
+  .hero-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s infinite;
+  }
 
-              <div className="flex flex-wrap gap-4">
-                <button className="bg-[#f6e6d2] text-[#2b0000] px-7 py-3 rounded-2xl font-semibold hover:scale-105 transition duration-300">
-                  View Projects
-                </button>
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
 
-                <button className="border border-[#8d4b4b] px-7 py-3 rounded-2xl hover:bg-[#4b0000] transition duration-300">
-                  Collaborate
-                </button>
-              </div>
-            </div>
+  .hero-platforms {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
 
-            <div className="flex-1 relative">
-              <div className="absolute inset-0 blur-3xl bg-[#c71f37]/20 rounded-full" />
+  .pill {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--gray2);
+    padding: 4px 12px;
+    border-radius: 99px;
+    color: var(--accent2);
+  }
 
-              <div className="relative rounded-[2rem] overflow-hidden border border-[#6e2b2b] shadow-[0_0_60px_rgba(255,0,50,0.15)]">
-                <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop"
-                  alt="portfolio"
-                  className="w-full h-[600px] object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 16vw, 7.5rem);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+  }
 
-      {/* ABOUT */}
-      <section className="px-6 md:px-16 pb-24">
-        <div className="grid lg:grid-cols-2 gap-8">
-          <div className="bg-[#4a0000]/40 border border-[#5d1f1f] rounded-[2rem] p-8 backdrop-blur-md">
-            <h2
-              className="text-4xl mb-6"
-              style={{ fontFamily: 'serif' }}
-            >
-              About Me
-            </h2>
+  .hero-byline {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
 
-            <p className="text-[#e9cdbd] leading-relaxed text-lg mb-5">
-              Replace this with your own story. Talk about your journey,
-              creative philosophy, vision, audience, and the kind of digital
-              future you want to build.
-            </p>
+  .hero-slogan {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
 
-            <p className="text-[#d7b7a5] leading-relaxed">
-              This portfolio is designed to feel cinematic, editorial, luxury,
-              and futuristic — inspired by fashion magazines, deep burgundy
-              aesthetics, and creator-founder energy.
-            </p>
-          </div>
+  .hero-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
 
-          <div className="bg-[#4a0000]/40 border border-[#5d1f1f] rounded-[2rem] p-8 backdrop-blur-md">
-            <h2
-              className="text-4xl mb-6"
-              style={{ fontFamily: 'serif' }}
-            >
-              Collaborations
-            </h2>
+  .hero-desc {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 320px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
 
-            <div className="grid grid-cols-2 gap-4">
-              {collaborations.map((item) => (
-                <div
-                  key={item}
-                  className="bg-[#5c0000]/40 border border-[#713333] rounded-2xl p-5 hover:-translate-y-1 transition"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+  .hero-desc strong { color: var(--accent); font-weight: 500; }
 
-      {/* PROJECTS */}
-      <section className="px-6 md:px-16 pb-24">
-        <div className="mb-10">
-          <p className="uppercase tracking-[0.4em] text-sm text-[#c89e8a] mb-4">
-            Featured Work
-          </p>
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s;
+  }
 
-          <h2
-            className="text-5xl"
-            style={{ fontFamily: 'serif' }}
-          >
-            Selected Projects
-          </h2>
-        </div>
+  .cta-btn:hover { transform: scale(1.04); background: var(--accent2); color: var(--black); }
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <div
-              key={project.title}
-              className="group bg-[#430000]/40 border border-[#5f2020] rounded-[2rem] overflow-hidden backdrop-blur-md hover:scale-[1.01] transition duration-300"
-            >
-              <div className="h-[260px] overflow-hidden relative">
-                <img
-                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop"
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-                />
+  /* SECTIONS */
+  section {
+    padding: 4rem 2rem;
+    border-bottom: 1px solid var(--gray2);
+    position: relative;
+    z-index: 1;
+  }
 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2b0000] to-transparent" />
-              </div>
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
 
-              <div className="p-8">
-                <p className="uppercase tracking-[0.3em] text-xs text-[#d5a896] mb-4">
-                  {project.type}
-                </p>
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
 
-                <h3 className="text-3xl font-bold mb-4">
-                  {project.title}
-                </h3>
+  .about-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    line-height: 1.05;
+  }
 
-                <p className="text-[#e3c4b4] leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+  .about-body {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.8;
+  }
 
-      {/* VIDEO / REELS SECTION */}
-      <section className="px-6 md:px-16 pb-24">
-        <div className="bg-[#3a0000]/50 border border-[#5d1f1f] rounded-[2rem] p-8 md:p-12 backdrop-blur-md">
-          <div className="flex flex-col lg:flex-row justify-between gap-10 items-start">
-            <div className="max-w-xl">
-              <h2
-                className="text-5xl mb-6"
-                style={{ fontFamily: 'serif' }}
-              >
-                Reels & Visual Work
-              </h2>
+  .about-body strong { color: var(--white); font-weight: 500; }
 
-              <p className="text-[#e3c4b4] leading-relaxed text-lg">
-                Showcase your cinematic reels, campaigns, edits, mood films,
-                AI experiments, UGC visuals, or creative direction projects in
-                this section.
-              </p>
-            </div>
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--gray2);
+    margin-top: 3rem;
+    border: 1px solid var(--gray2);
+    border-radius: 12px;
+    overflow: hidden;
+  }
 
-            <div className="w-full lg:w-[420px] aspect-video rounded-[2rem] overflow-hidden border border-[#6a2d2d] bg-black flex items-center justify-center text-[#caa593]">
-              Embed Reel / Video Here
-            </div>
-          </div>
-        </div>
-      </section>
+  .stat-box { background: var(--surface); padding: 1.5rem; }
 
-      {/* CONTACT */}
-      <section className="px-6 md:px-16 pb-20">
-        <div className="bg-gradient-to-br from-[#5a0000] to-[#2b0000] border border-[#6a2d2d] rounded-[2rem] p-10 md:p-16 relative overflow-hidden">
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-[#ff0048]/10 blur-3xl" />
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1;
+  }
 
-          <div className="relative z-10 max-w-3xl">
-            <p className="uppercase tracking-[0.4em] text-sm text-[#d8af9e] mb-4">
-              Let’s Collaborate
-            </p>
+  .stat-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
 
-            <h2
-              className="text-5xl md:text-7xl leading-none mb-8"
-              style={{ fontFamily: 'serif' }}
-            >
-              Creating what
-              <br />
-              shouldn’t exist.
-            </h2>
+  /* DEALS */
+  .deals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 0.5rem;
+  }
 
-            <p className="text-[#ecd1c1] leading-relaxed text-lg mb-10 max-w-2xl">
-              Add your Instagram, email, Telegram, portfolio links, booking
-              form, or collaboration details here.
-            </p>
+  .deal-card {
+    background: var(--surface);
+    border: 1px solid var(--gray2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
 
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-[#f6e6d2] text-[#2b0000] px-7 py-3 rounded-2xl font-semibold hover:scale-105 transition">
-                Instagram
-              </button>
+  .deal-card:hover { border-color: var(--gold); }
 
-              <button className="border border-[#9f6767] px-7 py-3 rounded-2xl hover:bg-[#4b0000] transition">
-                Email
-              </button>
+  .deal-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.06;
+  }
 
-              <button className="border border-[#9f6767] px-7 py-3 rounded-2xl hover:bg-[#4b0000] transition">
-                Telegram
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+  .deal-brand { font-size: 18px; font-weight: 500; margin-bottom: 6px; }
+  .deal-type { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); margin-bottom: 1rem; }
+
+  .deal-rate {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .deal-rate-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  .deal-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--gold-muted);
+    color: var(--gold);
+    padding: 3px 10px;
+    border-radius: 99px;
+    border: 1px solid rgba(212,168,71,0.3);
+  }
+
+  /* POSTS GRID */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .post-card {
+    background: var(--surface);
+    border: 1px solid var(--gray2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .post-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+
+  .post-thumb {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--gray2);
+    background: var(--surface2);
+  }
+
+  .post-info { padding: 12px 14px; }
+  .post-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+  .post-tag { font-size: 11px; color: var(--gold); letter-spacing: 0.05em; }
+
+  /* PLATFORMS */
+  .platforms-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .platform-pill {
+    background: var(--surface);
+    border: 1px solid var(--gray2);
+    border-radius: 99px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* RATES */
+  .rates-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .rate-card {
+    background: var(--surface);
+    border: 1px solid var(--gray2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .rate-card.featured {
+    background: var(--accent);
+    border-color: var(--accent);
+    grid-column: 1 / -1;
+  }
+
+  .rate-card:not(.featured):hover { border-color: var(--gold); }
+
+  .rate-name {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .rate-card.featured .rate-name { color: rgba(53,4,4,0.6); }
+
+  .rate-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .rate-card.featured .rate-price { color: var(--black); }
+
+  .rate-desc { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .rate-card.featured .rate-desc { color: rgba(53,4,4,0.7); }
+
+  /* CONTACT */
+  .contact-area { text-align: center; padding: 5rem 2rem; }
+
+  .contact-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(3rem, 12vw, 6rem);
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-headline span { color: var(--accent); }
+  .contact-sub { font-size: 15px; color: var(--muted); margin-bottom: 2.5rem; font-weight: 300; }
+
+  .contact-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--gray2);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 99px;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+
+  .btn-outline:hover { border-color: var(--white); }
+
+  footer {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--gray2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    .about-grid, .deals-grid, .rates-grid { grid-template-columns: 1fr; }
+    .rate-card.featured { grid-column: auto; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Available for brand deals</div>
+  <div class="hero-platforms">
+    <span class="pill">Instagram Reels</span>
+    <span class="pill">TikTok</span>
+    <span class="pill">YouTube Shorts</span>
+    <span class="pill">LinkedIn</span>
+  </div>
+  <h1 class="hero-name">Yashasvibe</h1>
+  <p class="hero-byline">by Yashasvi Soni</p>
+  <p class="hero-slogan">"Making tech feel human — one scroll-stop at a time."</p>
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      <strong>Tech UGC creator</strong> making content that actually converts — honest, bold, and built for the algorithm.
+    </p>
+    <a href="#contact" class="cta-btn">Work with me</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section>
+  <p class="section-label">About</p>
+  <div class="about-grid reveal">
+    <div>
+      <h2 class="about-headline">I make tech look human.</h2>
     </div>
-  );
-}
+    <div class="about-body">
+      I create <strong>short-form UGC content</strong> for tech and AI brands — the kind that stops the scroll, builds trust, and drives action. Based in India, creating for a global audience across <strong>Reels, TikTok, Shorts, and LinkedIn</strong>.
+      <br><br>
+      I don't just talk about products. I live them.
+    </div>
+  </div>
+  <div class="stats-row reveal">
+    <div class="stat-box">
+      <div class="stat-num">4</div>
+      <div class="stat-desc">Platforms active</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">2+</div>
+      <div class="stat-desc">Brand partnerships</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">Tech</div>
+      <div class="stat-desc">Primary niche</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">AI</div>
+      <div class="stat-desc">Specialist focus</div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT DEALS -->
+<section>
+  <p class="section-label">Current brand deals</p>
+  <div class="deals-grid reveal">
+    <div class="deal-card">
+      <div class="deal-brand">Lovable</div>
+      <div class="deal-type">AI App Builder · UGC Deal</div>
+      <div class="deal-rate">$5</div>
+      <div class="deal-rate-label">per 1,000 views</div>
+      <div class="deal-badge">Active</div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-brand">Poppy AI</div>
+      <div class="deal-type">AI Tool · UGC Deal</div>
+      <div class="deal-rate">$5</div>
+      <div class="deal-rate-label">per 1,000 views</div>
+      <div class="deal-badge">Active</div>
+    </div>
+    <div class="deal-card">
+      <div class="deal-brand">PicsArt</div>
+      <div class="deal-type">Photo Editing Tool · UGC Deal</div>
+      <div class="deal-rate">—</div>
+      <div class="deal-rate-label">rate TBD</div>
+      <div class="deal-badge">Active</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT I CREATE -->
+<section>
+  <p class="section-label">What I create</p>
+  <div class="posts-grid reveal">
+
+    <div class="post-card">
+      <div class="post-thumb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" stroke="#d4a847" stroke-width="1.5"/><polygon points="13,10 13,22 22,16" fill="#d4a847" opacity="0.8"/></svg>
+      </div>
+      <div class="post-info">
+        <div class="post-title">Product demos</div>
+        <div class="post-tag">Short-form · Ads-ready</div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-thumb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" stroke="#d4a847" stroke-width="1.5"/><path d="M12 16l3 3 5-5" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="post-info">
+        <div class="post-title">Honest reviews</div>
+        <div class="post-tag">Trust-building</div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-thumb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M6 16h4l3-8 4 16 3-8h6" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="post-info">
+        <div class="post-title">Scroll-stoppers</div>
+        <div class="post-tag">Hook-first · Viral format</div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-thumb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="6" y="8" width="20" height="3" rx="1.5" fill="#d4a847" opacity="0.5"/><rect x="6" y="14" width="14" height="3" rx="1.5" fill="#d4a847" opacity="0.7"/><rect x="6" y="20" width="17" height="3" rx="1.5" fill="#d4a847"/></svg>
+      </div>
+      <div class="post-info">
+        <div class="post-title">Tutorials & how-tos</div>
+        <div class="post-tag">Educational</div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-thumb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 20c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/><circle cx="16" cy="11" r="3" stroke="#d4a847" stroke-width="1.5"/></svg>
+      </div>
+      <div class="post-info">
+        <div class="post-title">Testimonials</div>
+        <div class="post-tag">Conversion · UGC</div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <div class="post-thumb">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="5" y="5" width="10" height="10" rx="2" stroke="#d4a847" stroke-width="1.5"/><rect x="17" y="5" width="10" height="10" rx="2" stroke="#d4a847" stroke-width="1.5"/><rect x="5" y="17" width="10" height="10" rx="2" stroke="#d4a847" stroke-width="1.5"/><rect x="17" y="17" width="10" height="10" rx="2" stroke="#d4a847" stroke-width="1.5"/></svg>
+      </div>
+      <div class="post-info">
+        <div class="post-title">Multi-format packages</div>
+        <div class="post-tag">Batch · All platforms</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section>
+  <p class="section-label">Platforms</p>
+  <div class="platforms-row reveal">
+    <div class="platform-pill">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#d4a847" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#d4a847" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#d4a847"/></svg>
+      Instagram Reels
+    </div>
+    <div class="platform-pill">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12a3 3 0 100 6 3 3 0 000-6z" stroke="#d4a847" stroke-width="1.5"/><path d="M15 8v8M15 8a3 3 0 003 3" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/></svg>
+      TikTok
+    </div>
+    <div class="platform-pill">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#d4a847" stroke-width="1.5"/><polygon points="10,8 10,16 16,12" fill="#d4a847"/></svg>
+      YouTube Shorts
+    </div>
+    <div class="platform-pill">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="#d4a847" stroke-width="1.5"/><path d="M7 17V10M7 7v.5M12 17v-4c0-1.1.9-2 2-2h1a2 2 0 012 2v4M12 17v-7" stroke="#d4a847" stroke-width="1.5" stroke-linecap="round"/></svg>
+      LinkedIn
+    </div>
+  </div>
+</section>
+
+<!-- WORK WITH ME -->
+<section>
+  <p class="section-label">Work with me</p>
+  <div class="rates-grid reveal">
+    <div class="rate-card featured">
+      <div class="rate-name">Best value</div>
+      <div class="rate-price">$400</div>
+      <div class="rate-desc">3 videos — full usage rights, hooks tested, delivered in 5 days</div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-name">Single video</div>
+      <div class="rate-price">$150</div>
+      <div class="rate-desc">1 polished UGC video, full usage rights</div>
+    </div>
+    <div class="rate-card">
+      <div class="rate-name">Content package</div>
+      <div class="rate-price">$600</div>
+      <div class="rate-desc">5 videos — ideal for ad testing & multi-platform use</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-area">
+  <div style="display:inline-block;background:var(--gold-muted);border:1px solid var(--gold);border-radius:99px;padding:4px 16px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;">Open to collabs</div>
+  <h2 class="contact-headline">Let's <span>create</span><br>together.</h2>
+  <p class="contact-sub">Flat-fee deals · per-view partnerships · long-term collabs</p>
+  <div class="contact-btns">
+    <a href="mailto:ugcyashasvi@gmail.com" class="cta-btn">ugcyashasvi@gmail.com</a>
+    <a href="https://instagram.com/yashasvi" class="btn-outline">Instagram</a>
+    <a href="https://tiktok.com/@yashasvi" class="btn-outline">TikTok</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Yashasvi</span>
+  <span>Tech UGC Creator · India</span>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
