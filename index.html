@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Yashasvibe — Portfolio</title>
 
@@ -30,34 +30,18 @@ color:white;
 overflow-x:hidden;
 }
 
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-width:8px;
-}
-
-::-webkit-scrollbar-track{
-background:#140000;
-}
-
-::-webkit-scrollbar-thumb{
-background:#7a0000;
-border-radius:999px;
-}
-
 /* CURSOR */
 
 .cursor{
 width:18px;
 height:18px;
-border:2px solid #fff;
+border:1px solid white;
 border-radius:50%;
 position:fixed;
 pointer-events:none;
-z-index:99999;
 transform:translate(-50%,-50%);
 mix-blend-mode:difference;
-transition:transform .1s ease;
+z-index:99999;
 }
 
 /* HERO */
@@ -68,16 +52,16 @@ padding:40px 60px;
 position:relative;
 overflow:hidden;
 background:
-radial-gradient(circle at top,#7a0000 0%,#280000 45%,#080808 100%);
+radial-gradient(circle at top,#7a0000 0%,#260000 40%,#090909 100%);
 }
 
-/* BIG TEXT */
+/* BG TEXT */
 
 .big-bg{
 position:absolute;
-top:-20px;
+top:-10px;
 left:20px;
-font-size:16vw;
+font-size:15vw;
 font-family:'Cormorant Garamond',serif;
 font-weight:700;
 line-height:.8;
@@ -86,7 +70,7 @@ color:rgba(0,0,0,.45);
 z-index:1;
 }
 
-/* HERO GRID */
+/* GRID */
 
 .hero-grid{
 max-width:1500px;
@@ -109,7 +93,7 @@ padding-top:120px;
 font-size:.75rem;
 letter-spacing:5px;
 margin-bottom:25px;
-color:#f6dede;
+color:#f5dede;
 }
 
 .main-title{
@@ -186,7 +170,7 @@ drop-shadow(0 0 70px rgba(255,0,0,.35))
 drop-shadow(0 0 120px rgba(255,0,0,.25));
 }
 
-/* SIDE IMAGE */
+/* SIDE BODY */
 
 .side-body{
 position:absolute;
@@ -223,7 +207,7 @@ line-height:.85;
 color:#f7efe8;
 }
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
 padding:120px 60px;
@@ -268,12 +252,6 @@ margin-bottom:25px;
 
 .brand-card h3{
 font-size:2rem;
-margin-bottom:10px;
-}
-
-.brand-card p{
-color:#d6bcbc;
-line-height:1.8;
 }
 
 /* ABOUT */
@@ -367,8 +345,6 @@ transition:.4s;
 transform:translateY(-5px);
 }
 
-/* SOCIALS */
-
 .socials{
 margin-top:50px;
 display:flex;
@@ -390,8 +366,6 @@ transition:.4s;
 background:white;
 color:black;
 }
-
-/* FOOTER */
 
 .footer{
 padding:40px;
@@ -462,7 +436,7 @@ font-size:3rem;
 }
 
 .big-bg{
-font-size:26vw;
+font-size:24vw;
 }
 
 .right-title .big{
@@ -536,15 +510,23 @@ UGC creator, founder, and cinematic visual storyteller building emotional creato
 
 <div class="center">
 
+<!-- IMPORTANT -->
+<!-- PUT YOUR 3D FACE IMAGE INSIDE images FOLDER -->
+<!-- NAME IT: yashasvi-3d.png -->
+
 <img
 class="main-face"
-src="./images/yashasvi-3d.png"
+src="images/yashasvi-3d.png"
 alt="Yashasvi 3D"
 />
 
+<!-- IMPORTANT -->
+<!-- PUT YOUR FULL BODY PNG INSIDE images FOLDER -->
+<!-- NAME IT: yashasvi-body.png -->
+
 <img
 class="side-body"
-src="./images/yashasvi-body.png"
+src="images/yashasvi-body.png"
 alt="Yashasvi"
 />
 
@@ -579,40 +561,25 @@ UGC + Brand Campaigns
 
 <div class="brand-card">
 
-<img src="./images/lovable-logo.png" alt="Lovable AI">
+<img src="images/lovable-logo.png" alt="Lovable AI">
 
 <h3>Lovable AI</h3>
 
-<p>
-Creative UGC concepts, aesthetic storytelling,
-and emotionally-driven creator visuals.
-</p>
-
 </div>
 
 <div class="brand-card">
 
-<img src="./images/poppy-logo.png" alt="Poppy AI">
+<img src="images/poppy-logo.png" alt="Poppy AI">
 
 <h3>Poppy AI</h3>
 
-<p>
-Experimental AI-first visual concepts,
-branding aesthetics, and storytelling campaigns.
-</p>
-
 </div>
 
 <div class="brand-card">
 
-<img src="./images/picsart-logo.png" alt="Picsart">
+<img src="images/picsart-logo.png" alt="Picsart">
 
 <h3>Picsart</h3>
-
-<p>
-Creator-focused visual edits, cinematic designs,
-and aesthetic social-first content systems.
-</p>
 
 </div>
 
@@ -638,9 +605,6 @@ My work blends storytelling, AI tools, visual direction,
 fashion-inspired design, and immersive digital experiences
 to create things that feel emotional, futuristic,
 and unforgettable.
-
-I’m currently building creative systems, UGC campaigns,
-AI-first concepts, and visual worlds inspired by what I wish existed online.
 </div>
 
 </section>
@@ -692,26 +656,6 @@ Skills & Software
 </div>
 <div class="bar">
 <div class="fill" style="width:92%"></div>
-</div>
-</div>
-
-<div class="skill">
-<div class="skill-top">
-<span>AI Creative Workflows</span>
-<span>8.9/10</span>
-</div>
-<div class="bar">
-<div class="fill" style="width:89%"></div>
-</div>
-</div>
-
-<div class="skill">
-<div class="skill-top">
-<span>Content Strategy</span>
-<span>8.7/10</span>
-</div>
-<div class="bar">
-<div class="fill" style="width:87%"></div>
 </div>
 </div>
 
@@ -774,8 +718,6 @@ TikTok
 <div class="footer">
 © Yashasvibe — by Yashasvi Soni
 </div>
-
-<!-- CURSOR SCRIPT -->
 
 <script>
 
